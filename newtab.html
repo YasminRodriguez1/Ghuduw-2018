@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	       
+		<title i18n="app_name"></title>
+
+		<meta charset="utf-8">
+		<meta name="viewport"    content="width=device-width, initial-scale=1.0">
+		<meta name="author"      content="Nuha Khaled">
+
+        <!--  3rd party libraries and utilities -->
+		<script src="vendor/jquery/jquery.min.js"></script>
+		<script src="vendor/jquery/jquery-ui.min.js"></script>
+		<script src="vendor/jquery/jquery.countdown.js"></script>
+		<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+		<script src="vendor/jquery/perfect-scrollbar.jquery.min.js"></script>
+		<script src="vendor/jquery/jquery.ui.touch-punch.min.js"></script>
+		<script src="vendor/html2canvas.js" type="text/javascript"></script>
+		<script src="vendor/modernizr.js"></script>
+		<script src="vendor/hijridate.js"></script>
+
+
+		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	    <link href="vendor/css/perfect-scrollbar.min.css" rel="stylesheet" type="text/css">
+
+	    <!-- Fonts -->
+		<link href="vendor/font-awesome/css/fontawesome-all.css" rel="stylesheet">
+
+	    <!-- Newtab Code and Helpers -->
+		<script src="js/helpers.js"></script>
+
+
+
+		<!-- style -->
+		<link rel="stylesheet" href="css/style.css">
+
+	</head>
+	<body class="theme-invert text-shadows cbp-spmenu-push">
+
+		<!-- background video - default=disabled. -->
+
+		<div id="bgVideoPlayer">
+        	<iframe frameborder="0" height="100%" width="100%" allow="autoplay; fullscreen" wmode="Opaque" allowfullscreen>
+        	</iframe>
+    	</div>
+
+		<!-- Taskinator - default=disabled. -->
+    	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
+			<div class="taskinator">
+		  		<div class="my-form">
+		    		<form class="todo-form">
+		      			<span class="icn-input"></span>
+		      			<input type="text" class="todo-input" i18n_placeholder="taskinator_add_task_title">
+		      			<button type="submit"  class="todo-add not-focused"><span></span></button>
+		    		</form>
+		  		</div>
+
+		  		<div class="my-list" id="my-list">
+		    		<ul class="todo-list"></ul>
+		    		<ul class="clone-list" id="clone-list"></ul>
+		  		</div>
+		  
+			  	<footer>
+				    <div class="my-func">
+				      <button id="delete">
+				        <span class="d-parts1"></span>
+				        <span class="d-parts2"></span>
+				        <span class="d-parts3"></span>
+				      </button>
+				  </div> 
+			  	</footer>
+			</div>
+		</nav>
+
+		<!-- body wrapper - main screen -->
+		<div class="wrapper" id="wrapper-btn">
+
+			<!-- Navigation -->
+			<nav class="mainmenu" id="nav-menu">
+					<div class="container">
+						<!-- Left dropdown navigation btn -->
+						<div class="dropdown">
+							<button type="button" class="navbar-toggle" data-toggle="dropdown">
+								<span class="icon-bar"></span> 
+								<span class="icon-bar"></span> 
+								<span class="icon-bar"></span> 
+							</button>
+
+							<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+								<li><a i18n="hijri_date" href="#head" ></a></li>
+								<li><a i18n="ramadan_counter" href="#ramadan_counter" ></a></li>
+								<li><a i18n="ghuduw_settings" href="#ghuduw_settings" ></a></li>
+
+								<li><a i18n="ghuduw_radio_settings" href="#ghuduw_radio_settings" ></a></li>
+								<li><a i18n="about_ghuduw" href="#about" ></a></li>
+							</ul>
+						</div>
+
+
+						<!-- Right navigation btns -->
+						<div class="nav-right">	
+
+							<div>
+								<button i18n_title="refresh_page" class="navbar-toggle repeat-btn" >
+									<span class="fas fa-redo"></span>
+								</button>
+							</div>
+							
+							<div>
+								<button i18n_title="ghuduw_settings" class="navbar-toggle settings-btn" >
+									<a  href="#ghuduw_settings" ><span class="fas fa-cog"></span></a>
+								</button>
+							</div>
+
+							<div>
+								<a id="ghuduw_recommendation_url" ></a>
+								<button i18n_title="ghuduw_recommendation" class="navbar-toggle watch-btn" >
+									<span class="fa fa fa-gift"></span>
+								</button>
+								</a>
+							</div>
+
+							<div>
+								<button i18n_title="play_ghuduw_radio" class="navbar-toggle radio-btn">
+									<span class="fa fa-headphones"></span>
+								</button>
+							</div>
+
+							<div>
+								<button i18n_title="ghuduw_tasks" id="tasks-btn" class="navbar-toggle tasks-btn" >
+									<span class="fa fa-list-ol"></span>
+								</button>
+							</div>
+	
+
+							<div>
+								<button i18n_title="video_bg" class="navbar-toggle bgmode-btn" >
+									<span class="fas fa-file-video"></span>
+								</button>
+							</div>
+	
+							<!-- class="share-button" id="first-share-button"  -->
+							<!-- expanding social icons -->
+							<div class="expanding-button" id="social_icons_exp">
+                        		<button  i18n_title="share"  class="social-icons-btn navbar-toggle" >
+                        			<span class="fas fa-share-alt"></span>
+                        		</button>
+                       
+                       			 <div class="icon-wrapper">
+		                            <ul class="navbar-toggle">
+
+		                            	<li>
+		                            		<button  i18n_title="chromewebstore_url" class="chromewebstore-url" target="_blank" >
+		                            			<i class="fab fa-chrome"></i>
+		                            		</button>
+		                            	</li>
+
+
+		                                <li>
+		                                	<button  i18n_title="twitter_share"  class="twitter-share" target="_blank" >
+		                                		<i class="fab fa-twitter"></i>
+		                                	</button>
+		                                </li>
+
+		                                <li>
+		                                	<button i18n_title="facebook_share" class="facebook-share">
+		                                		<i class="fab fa-facebook-f"></i>
+		                                	</button>
+		                                </li>
+
+		                                <li>
+		                                	<button i18n_title="linkedin_share" class="linkedin-share" >
+		                                		<i class="fab fa-linkedin"></i>
+		                                	</button>
+		                                </li>
+
+		                                <li>
+		                                	<button i18n_title="googleplus_share" class="googleplus-share" target="_blank">
+		                                		<i class="fab fa-google-plus"></i>
+		                                	</button>
+		                                </li>
+
+		                                <li>
+		                                	<button i18n_title="download_ghuduw_photo" class="download-ghuduw-photo">
+		                                		<i class="fas fa-download"></i>
+		                                	</button>
+		                                </li>
+
+		                                <li>
+		                                	<button class="navbar-toggle close-social-icons">
+		                                		<i class="fa fa-times"></i>
+		                                	</button>
+		                                </li>
+		                            </ul>
+		                        </div>
+                    		</div>
+
+
+							<!-- expanding recommended websites icons -->
+							<!--
+							<div class="expanding-button" id="recommended-icons-exp">
+                        		<button i18n_title="recommended_websites" class="recommended-websites-icons-btn navbar-toggle">
+                        			<i class="fas fa-search"></i>
+                        		</button>
+                       
+                       			 <div class="icon-wrapper">
+		                            <ul class="navbar-toggle">
+		                                <li>
+		                                	<button  i18n_title="holy_quran" class="quran-btn" target="_blank">
+		                                		<i class="fas fa-book-open"></i>
+		                                	</button>
+		                                </li>
+
+		                                <li>
+		                                	<button i18n_title="quran_tafsir" class="tafsir-btn">
+		                                		<i class="fas fa-chalkboard-teacher"></i>
+		                                	</button>
+		                                </li>
+
+		                                <li>
+		                                	<button i18n_title="hadith" title="موسوعة اﻷحاديث" class="hadith-btn">
+		                                		<i class="fas fa-lightbulb"></i>
+		                                	</button>
+		                                </li>
+
+		                                <li><button class="navbar-toggle close-recommended-websites-icons"><i class="fa fa-times"></i></button></li>
+		                            </ul>
+		                        </div>
+                    		</div>
+                    	-->
+						</div>
+					</div>
+				</nav>
+
+				<!-- End of Navigation -->
+
+				<!-- screens -->
+
+				<!-- Main (Home) section -->
+				<section class="section" id="head">
+					<div class="container">
+						<h2 class="hidden-element text-center title"> <img class="logo" src="images/logo-128.png" ></h2>
+
+						<div class="row">
+							<div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 text-center">
+								<a id="ghuduw-download-btn"></a>
+	
+								<h1 class="today-date title big-title"></h1>
+								<div class="month-progress"></div>
+								<h3 class="subtitle quote" id="quote"></h3>
+							</div> <!-- /col -->
+						</div> <!-- /row -->
+					</div>
+				</section>
+				<!-- End of Main (Home) section -->
+
+
+				<!-- Ramadan Counter section -->
+				<section class="section" id="ramadan_counter">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 text-center">	
+								<h1 class="title big-title" i18n="ramadan_date"></h1>
+								<h1 class="countdown styled"></h1> 
+								<h3 class="subtitle quote" ></h3>
+							</div> <!-- /col -->
+						</div> <!-- /row -->
+					</div>
+				</section>
+				<!-- End Ramadan Counter section -->
+
+
+				<!-- Ghuduw Radio settings section -->
+				<section class="section" id="ghuduw_settings">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">	
+								<h2 i18n="ghuduw_settings" class="text-center"></h2>
+								<div class="padding-div padding-right [ col-xs-12 col-sm-offset-2 col-sm-8 ]">
+								
+									<div>
+										<input type='button' value='-' class='plus-minus-input  qtyminus' field='quantity' />
+				    					<span i18n="hijri_date_adjusment_text" class="hijri_date_settings"></span>
+				    					<input type='button' value='+' class='plus-minus-input  qtyplus' field='quantity' />
+				    					<button class="plus-minus-input reset_date" i18n="reset_date" ></button>  : 
+				    					<span class="today-date"></span>
+
+									</div>
+									<hr/>
+									<div class="padding-div flex-display">
+										
+										<span i18n_title="change_language" class="fa-3x fas fa-language"></span>
+										
+										<select class="select">
+										    <option value="ar">اللغة العربية</option> 
+										    <option value="en">English</option> 
+										    <option value="tr">Türkçe</option> 
+
+										  </select>  
+									</div>
+									<hr/>
+									<div>
+										<p class="flags_button" i18n="background_mode_desc"></p>
+										<img class="full_width" src="/images/bg_mode.png">
+									</div>
+								</div>
+								
+							
+							</div> <!-- /col -->
+						</div> <!-- /row -->
+					</div>
+				</section>
+				<!-- End of Ghuduw Radio settings section -->
+
+
+
+				<!-- Ghuduw Radio settings section -->
+				<section class="section" id="ghuduw_radio_settings">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">	
+								<h2 i18n="ghuduw_radio_settings" class="text-center"></h2>
+								<div class="padding-div padding-right [ col-xs-12 col-sm-offset-2 col-sm-8 ]">
+									<ul class="channels-list filter-ul">
+										<li class="filter_li">
+											<a>
+												<div class ="channel">
+													<i class="fas fa-search"></i>
+												</div>
+
+												<div class="info">
+													<input class="title filter-input"/>
+												</div>
+											</a>
+										</li>
+									</ul>
+								</div>
+								
+								<div class="radio-playlist [ col-xs-12 col-sm-offset-2 col-sm-8 ]">
+									<ul class="channels-list channels-ul"></ul>
+								</div>
+
+								<div class="mp3-copyright"><span i18n="radio_copyrights"></span>
+									<a href="http://mp3quran.net/" target="_blank"> mp3quran.net</a>
+								</div>
+							</div> <!-- /col -->
+						</div> <!-- /row -->
+					</div>
+				</section>
+				<!-- End of Ghuduw Radio settings section -->
+
+				<!-- About Ghuduw section -->
+				<section class="section" id="about">
+					<div class="container">
+						<h2 class="text-center title"> <img class="logo-img" ></h2>
+						<div  class="row">
+							<div class="col-sm-10 col-sm-offset-1">  
+
+							<p i18n="ghuduw_desc" class="p-font justify""></p>
+
+								<p class="p-font"><span i18n="ghuduw_desc_ul_title"></span>
+									<ul class="p-font justify direction_orient ">
+										<li  i18n="ghuduw_desc_li_one" class=justify"></li>
+										<li  i18n="ghuduw_desc_li_two" class="justify"></li>
+										<li  i18n="ghuduw_desc_li_three" class="justify"></li>
+									</ul>
+								</p>    
+								
+								<br/>
+
+								<p class="text-center p-font"><strong i18n="ghuduw_links"></strong>  
+								
+									<a target="_blank" href="https://chrome.google.com/webstore/detail/%D8%BA%D9%8F%D8%AF%D9%8F%D9%88%D9%91/aeajnoplcpamgigegldkgiffjbfablna"><span i18n_title="chromewebstore_url" class="fab fa-chrome"></span>    </a>   
+
+									<a target="_blank" href="https://www.facebook.com/Ghuduw/"><span i18n_title="facebook_page" class="fab fa-facebook-f"></span> </a> 
+
+									<a target="_blank" href="https://twitter.com/ghuduwApp"><span i18n_title="twitter_account" class="fab fa-twitter"></span> </a> 
+
+								</p>
+					
+								<p class="text-center p-font">
+										<div class="center">
+											<strong i18n="share"></strong>
+
+		                            		<button  i18n_title="chromewebstore_url" class="chromewebstore-url btn-as-a" target="_blank" >
+		                            			<i class="fab fa-chrome"></i>
+		                            		</button>
+		                            	
+		                                	<button  i18n_title="twitter_share"  class="twitter-share btn-as-a" target="_blank" >
+		                                		<i class="fab fa-twitter"></i>
+		                                	</button>
+		                                
+		                                	<button i18n_title="facebook_share" class="facebook-share btn-as-a">
+		                                		<i class="fab fa-facebook"></i>
+		                                	</button>
+		                                
+		                                	<button i18n_title="linkedin_share" class="linkedin-share btn-as-a" >
+		                                		<i class="fab fa-linkedin"></i>
+		                                	</button>
+		                                
+		                                	<button i18n_title="googleplus_share" class="googleplus-share btn-as-a" target="_blank">
+		                                		<i class="fab fa-google-plus"></i>
+		                                	</button>
+
+		                                	<button i18n_title="pinterest_share" class="pinterest-share btn-as-a" target="_blank">
+		                                		<i class="fab fa-pinterest"></i>
+		                                	</button>
+		                                
+		                                	<button i18n_title="download_ghuduw_photo" class="download-ghuduw-photo btn-as-a">
+		                                		<i class="fa fa-download"></i>
+		                                	</button>
+		                                </li>
+								</p>
+							</div>
+						</div>
+					</div>
+				</section>
+				<!-- End of About Ghuduw section -->
+		</div>
+		<!-- End of body wrapper - main screen -->
+
+
+		<script src="js/radioplayer.js"></script>
+		<script src="vendor/magister.js"></script>
+		<script src="js/newtab.js"></script>
+		<script src="vendor/classie.js"></script>
+		<script src="js/taskinator.js"></script>
+
+	</body>
+</html>

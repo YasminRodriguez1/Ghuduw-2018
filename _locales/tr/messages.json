@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "Ghuduw - غُدُوّ",
+    "description": "The title of the application, displayed in the web store."
+  },
+  "appDesc": {
+    "message": "Yeni sekme “Google Chrome“ açtığında ghuduw görünmaktadır", 
+    "description":"The description of the application, displayed in the web store."
+  }
+}

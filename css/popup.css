@@ -1,0 +1,97 @@
+@font-face {
+    font-family: Amiri;
+    src: url(../fonts/amiri/amiri-quran.woff);
+}
+
+
+body{
+	background-color:#f1f1f1;
+	width:320px;
+}
+
+a{
+    text-decoration: none !important;
+}
+
+.logo-img{
+    content:url("../images/logo-128.png");
+}
+
+.box > .icon { 
+    text-align: center; 
+    position: relative; 
+    margin-bottom: 24px;
+    margin-top: 24px;
+
+    }
+
+.box > .icon > .image { 
+    position: relative;
+    z-index: 2;
+    margin: auto;
+    width: 88px;
+    /* height: 88px; */
+    border: 5px solid rgba(10, 10, 10, 0);
+    line-height: 88px;
+    border-radius: 50%;
+    background: rgba(10, 10, 10, 0.91);
+    vertical-align: middle;
+    }
+.box > .icon > .image > i { 
+    font-size: 36px !important; 
+    color: #fff !important; 
+    }
+.box > .icon:hover > .image > i { 
+    color: white !important; 
+    }
+.box > .icon > .info { 
+    margin-top: -24px; 
+	background-color:rgba(242, 235, 235, 0.94);
+    border: 1px solid #e0e0e0; 
+    border-radius:2%;
+    padding: 15px 0 10px 0; 
+    }
+.box > .icon > .info > h3.title { 
+	font-family: 'Amiri', serif !important;
+
+    font-size: 16px; 
+    color: #222; 
+    font-weight: 500; 
+    }
+.box > .icon > .info > p { 
+    font-family: 'Amiri', serif !important;
+    font-size: 13px; 
+    color: #666; 
+    line-height: 1.5em; 
+    margin: 20px;
+    }
+.box > .icon:hover > .info > h3.title, .box > .icon:hover > .info > p, .box > .icon:hover > .info > .more > a { 
+    color: #222; 
+    }
+.box > .icon > .info > .more a { 
+    font-family: 'Amiri', serif !important;
+    font-size: 12px; 
+    color: #222; 
+    line-height: 12px; 
+    text-transform: uppercase; 
+    text-decoration: none; 
+    }
+.box > .icon:hover > .info > .more > a { 
+    color: #fff; 
+    padding: 6px 8px; 
+    background-color: #63B76C; 
+    }
+
+
+.btn{
+	border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.background-img-div{
+        min-height:100%;
+    -webkit-background-size: cover;
+       -moz-background-size: cover;
+         -o-background-size: cover;
+            background-size: cover;
+}
